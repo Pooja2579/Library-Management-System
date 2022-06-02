@@ -1,0 +1,165 @@
+#include &lt;iostream&gt;
+#include &lt;conio.h&gt;
+#include &lt;stdlib.h&gt;
+using namespace std;
+ 
+struct Cars {
+ 
+    string mark &#91;10] = {"Hyundai","BMW","Mercedes","Audi","Tesla","Skoda","Volkswagun","Toyota","Ford"};
+ 
+    string model &#91;10]= {"2016MD","2018AS","2018DS","2017LA","2018OW","2005Ps","2008PW","2010QW","2016SA"};
+ 
+    string color &#91;10]={"Red","black","yellow","Blue","Red","Brown","Silver","Black","grey"};
+ 
+    string maxs_peed &#91;10]={"100 Km/h ","150 Km/h","150 Km/h","170 Km/h","130 Km/h","140 Km/h","130 Km/h","120 Km/h","150 Km/h"};
+ 
+    int price &#91; 10 ] ={100,200,300,500,200,250,400,600,900} ;
+ 
+    int date &#91;10] = {2010,2012,2013,2017,2018,2005,2008,2010,2014};
+ 
+ 
+ 
+   };
+ 
+   struct Lessee {
+ 
+   string Name &#91;10];
+   string Natio_ID &#91;10] ;
+   int payment_acc &#91; 10] ;
+   };
+ 
+   //Declaring struct
+Cars car ;
+Lessee lessee ;
+ 
+//First output
+   void Minu ()
+{
+ 
+ 
+   int num=1;
+for(int i=0 ;i&lt;9;++i)
+{
+cout&lt;&lt;"\t\t\t";
+    cout&lt;&lt;"Enter " &lt;&lt;num&lt;&lt;"\t- To Select  "&lt;&lt;car.mark&#91;i]&lt;&lt;endl;
+    num++ ;
+}
+ 
+}
+ 
+//Second output
+void Details (int theChoice)
+  {
+   system("CLS");
+   cout&lt;&lt;"\n\n\n\t\t\t-----------------------------\n";
+     cout&lt;&lt;"\t\t\tYou Have Selected - "&lt;&lt;car.mark&#91;theChoice-1]&lt;&lt;endl;
+     cout&lt;&lt;"\t\t\t-----------------------------\n\n\n";
+     cout&lt;&lt;"\t\t\tModel : "&lt;&lt;car.model&#91;theChoice-1]&lt;&lt;endl;
+     cout&lt;&lt;"\t\t\tColor : "&lt;&lt;car.color&#91;theChoice-1]&lt;&lt;endl;
+     cout&lt;&lt;"\t\t\tMaximum Speed : "&lt;&lt;car.maxs_peed&#91;theChoice-1]&lt;&lt;endl;
+     cout&lt;&lt;"\t\t\tPrice : "&lt;&lt;car.price&#91;theChoice-1]&lt;&lt;"K"&lt;&lt;endl;
+ 
+ 
+  }
+   //check lessee credit
+ 
+   void check (int j )
+  {
+      if(lessee.payment_acc&#91;j]  &gt;= car.price&#91;j])
+           cout&lt;&lt;"\n\n\n\t\t\tProcess has been done successfully!! " &lt;&lt;endl;
+           else
+              cout&lt;&lt;"\n\n\n\t\t\tNot Available " &lt;&lt;endl;
+ 
+  }
+//User Inputcpo
+  void user_input (int theChoice)
+   {
+   system("CLS");
+        int j=theChoice-1 ;
+       cout&lt;&lt;"\t\t\t----------------------------------------\n";
+       cout&lt;&lt;"\t\t\tPlease Provide Your Personal Details  : \n";
+       cout&lt;&lt;"\t\t\t----------------------------------------\n\n";
+       cout&lt;&lt;"\n\tNOTE: PROVIDE FIRST NAME ONLY, DONOT ENTER SPACE WHILE PROVIDING NAME,\n\tPAYMENT WON'T PROCEED IF THE GIVEN AMOUNT IS LESS THEN THE RATE OF CAR\n\n\n\n";
+       cout&lt;&lt;"\t\t\tEnter Your Name : ";
+       cin&gt;&gt;lessee.Name&#91;j];
+       cout&lt;&lt;"\t\t\tEnter Your National ID : ";
+       cin&gt;&gt;lessee.Natio_ID&#91;j] ;
+       cout&lt;&lt;"\t\t\tPayment Amount: " ;
+       cin&gt;&gt;lessee.payment_acc&#91;j] ;
+ 
+ 
+     check( j ) ;
+   }
+ 
+ 
+int main()
+{
+int login();
+    login();
+ 
+         string decide ="yes" ;
+     cout&lt;&lt;"\t\t\t----------------------------------------------\n";
+     cout&lt;&lt;"\t\t\t\tSIMPLE CAR RENTAL SYSTEM \n";
+     cout&lt;&lt;"\t\t\tWelcome to Our Company ,Choose from the menu : "&lt;&lt;endl;
+     cout&lt;&lt;"\t\t\t----------------------------------------------\n";
+     while(decide!="exit")
+     {
+         Minu();
+     cout&lt;&lt;"\n\n\n\t\t\tYour Choice: ";
+     int theChoice ;
+     cin&gt;&gt;theChoice ;
+     Details(theChoice);
+     cout&lt;&lt;"\n\n\n\t\t\tAre You Sure, you want to rent this Car? (yes /no /exit ) : ";
+     cin&gt;&gt;decide ;
+     if(decide=="yes") {
+        user_input(theChoice);
+        cout&lt;&lt;"\n\n\t\t\tDo you want to continue ?(yes/no) ";
+        cin&gt;&gt;decide;
+        if (decide=="no") break ;
+system("CLS");
+     }
+ 
+   else {
+      if(decide=="no")
+      {
+       system("CLS");
+          continue ;
+      }
+     else if  (decide=="exit")
+     {
+     system("CLS");
+     cout&lt;&lt;"\n\n\n\t\t\tBrought To You By code-projects.org";
+ 
+         break ;
+     }
+ 
+   }
+     }
+ 
+ 
+    return 0;
+}
+//cpo
+int login(){
+   string pass ="";
+   char ch;
+   cout &lt;&lt;"\n\n\n\n\n\n\n\t\t\t\t\t  Simple Car Rental System Login";
+   cout &lt;&lt; "\n\n\n\n\n\n\n\t\t\t\t\t\tEnter Password: ";
+   ch = _getch();
+   while(ch != 13){//character 13 is enter
+      pass.push_back(ch);
+      cout &lt;&lt; '*';
+      ch = _getch();
+   }
+   if(pass == "pass"){
+      cout &lt;&lt; "\n\n\n\n\t\t\t\t\t  Access Granted! Welcome To Our System \n\n";
+      system("PAUSE");
+      system("CLS");
+ 
+   }else{
+      cout &lt;&lt; "\n\n\n\n\t\t\t\t\tAccess Aborted...Please Try Again!!\n";
+      system("PAUSE");
+      system("CLS");
+      login();
+   }
+}
